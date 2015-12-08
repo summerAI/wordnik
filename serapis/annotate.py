@@ -25,10 +25,13 @@ example = {
 def find_word(text, word):
     """
     Given (text, word)
-    Returns sentence containing word  TODO
+    Returns sentence containing word and position  TODO
 
     """
-    return text
+    sentence = text
+    positions = [i for i, x in enumerate(sentence.split()) if x == word]
+    position = positions[0] or None
+    return sentence, position
 
 
 def structure_sentence(text, word):
@@ -41,18 +44,25 @@ def structure_sentence(text, word):
     Single feature marker for sentences, such as number of sub-clauses (os something that actually makes sense)
     
     Returns
-    {   "s":        ...,
-        "s_clean":  ...,
+    {   "s":         ...,
+        "s_clean":   ...,
         "pos_tags": ...,
-        "features": ...  }
+        "pos":       ...,
+        "features":  ...  }
     """
-    sentence = find_word(text, word)
-
+    sentence, position = find_word(text, word)
     blob = TextBlob(sentence)
+    pos = blob.pos_tags
+
+    pos_tags = ['/'.join([b[0], b[1]]) for b in pos]
+    pos = list(pos_tags)
+    pos[position] = '_TERM_'  # add term pos for fun?
+
     structured = {
         's': sentence,  # need to extract the sentence
         's_clean': sentence.replace(word, '_TERM_'),
-        'pos_tags': ' '.join(['/'.join([b[0], b[1]]) for b in blob.pos_tags]),
+        'pos_tags': ' '.join(pos_tags),
+        'pos': pos,
         'features': None
     }
     return structured

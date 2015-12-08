@@ -9,8 +9,8 @@ __date__ = "2015-11-25"
 __email__ = "clare@summer.ai"
 
 
-test_input = ['A kalyptic culture is typified by peacefulness, tolerance and individualism.', 'kalyptic']
-
+test_text = 'A kalyptic culture is typified by peacefulness, tolerance and individualism.'
+test_term = 'kalyptic'
 test_output = {
     u'features': None,
     u'pos': [u'A/DT',
@@ -23,8 +23,7 @@ test_output = {
              u'tolerance/NN',
              u'and/CC',
              u'individualism/NN'],
-    u'pos_tags': u'A/DT kalyptic/JJ culture/NN is/VBZ typified/VBN by/IN \
-                    peacefulness/NN tolerance/NN and/CC individualism/NN',
+    u'pos_tags': u'A/DT kalyptic/JJ culture/NN is/VBZ typified/VBN by/IN peacefulness/NN tolerance/NN and/CC individualism/NN',
     u's': 'A kalyptic culture is typified by peacefulness, tolerance and individualism.',
     u's_clean': u'A _TERM_ culture is typified by peacefulness, tolerance and individualism.'
 }
@@ -32,7 +31,7 @@ test_output = {
 
 def test_page_structure():
     from serapis.annotate import structure_sentence
-    output = structure_sentence(test_input)
+    output = structure_sentence(test_text, test_term)
 
     for key in test_output.keys():
         assert output[key] == test_output[key]

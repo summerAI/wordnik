@@ -14,14 +14,6 @@ __email__ = "clare@summer.ai"
 from textblob import TextBlob
 
 
-example = {
-    "s": "A kalyptic culture is typified by peacefulness, tolerance and individualism.",
-    "s_clean": "a _TERM_ culture is typified by peacefulness tolerance and individualism",
-    "pos_tags": "A/DT _TERM_/JJ culture/NN is/VBZ typified/VBN by/IN peacefulness/NN ,/, tolerance/NN and/CC individualism/NN ./.",
-    "features": {}
-}
-
-
 def find_word(text, word):
     """
     Given (text, word)

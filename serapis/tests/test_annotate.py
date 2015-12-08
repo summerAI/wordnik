@@ -9,20 +9,20 @@ __date__ = "2015-11-25"
 __email__ = "clare@summer.ai"
 
 
-test_inputs = ['A kalyptic culture is typified by peacefulness, tolerance and individualism.', 'kalyptic']
+test_input = ['A kalyptic culture is typified by peacefulness, tolerance and individualism.', 'kalyptic']
 
-test_outputs = {
+test_output = {
     u'features': None,
     u'pos': [u'A/DT',
-            u'_TERM_',
-            u'culture/NN',
-            u'is/VBZ',
-            u'typified/VBN',
-            u'by/IN',
-            u'peacefulness/NN',
-            u'tolerance/NN',
-            u'and/CC',
-            u'individualism/NN'],
+             u'_TERM_',
+             u'culture/NN',
+             u'is/VBZ',
+             u'typified/VBN',
+             u'by/IN',
+             u'peacefulness/NN',
+             u'tolerance/NN',
+             u'and/CC',
+             u'individualism/NN'],
     u'pos_tags': u'A/DT kalyptic/JJ culture/NN is/VBZ typified/VBN by/IN \
                     peacefulness/NN tolerance/NN and/CC individualism/NN',
     u's': 'A kalyptic culture is typified by peacefulness, tolerance and individualism.',
@@ -32,7 +32,7 @@ test_outputs = {
 
 def test_page_structure():
     from serapis.annotate import structure_sentence
-    output = structure_sentence(example_inputs)
+    output = structure_sentence(test_input)
 
-    for key in example_outputs.keys():
+    for key in test_outputs.keys():
         assert output[key] == test_output[key]

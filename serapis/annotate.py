@@ -48,7 +48,7 @@ def structure_sentence(text, word):
 
     pos_tags = ['/'.join([b[0], b[1]]) for b in pos]
     pos = list(pos_tags)
-    pos[position] = '_TERM_'  # add term pos for fun?
+    pos[position] = '_TERM_'
 
     structured = {
         's': sentence,  # need to extract the sentence
